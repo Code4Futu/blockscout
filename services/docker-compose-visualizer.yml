@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   visualizer:
@@ -6,8 +6,13 @@ services:
     pull_policy: always
     platform: linux/amd64
     restart: always
-    container_name: 'visualizer'
+    container_name: "visualizer"
     env_file:
-      -  ../envs/common-visualizer.env
+      - ../envs/common-visualizer.env
     ports:
       - 8152:8050
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5" # number of files or file count
+        max-size: "5m" # file size

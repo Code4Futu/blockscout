@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   smart-contract-verifier:
@@ -6,8 +6,13 @@ services:
     pull_policy: always
     platform: linux/amd64
     restart: always
-    container_name: 'smart-contract-verifier'
+    container_name: "smart-contract-verifier"
     env_file:
-      -  ../envs/common-smart-contract-verifier.env
+      - ../envs/common-smart-contract-verifier.env
     ports:
       - 8150:8050
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5" # number of files or file count
+        max-size: "5m" # file size
